@@ -21,3 +21,15 @@ The goal of this repository is to help learners:
 Whether you are a student, aspiring data analyst, or someone looking to refine your data skills, this repository provides clear, step-by-step exercises to grow your understanding and mastery of **data science fundamentals**.  
 
 ✨ Dive in, explore the exercises, and level up your data skills!
+
+## 🤝 Contribution
+
+Feel free to contribute, improve, or suggest changes via pull requests or issues.
+
+## 📬 How to Reach Me
+
+You can contact me for feedback, collaboration, or questions:
+
+- Email: gentainvoca@gmail.com
+
+- LinkedIn: https://www.linkedin.com/in/gentian-voca-578943322/
