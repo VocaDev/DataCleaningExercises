@@ -107,8 +107,11 @@ All charts are created with Matplotlib and Seaborn.
 ## 📁 File Structure
 
 ├── dirty_cafe_sales.csv # Raw dataset
+
 ├── clean_cafe_sales.csv # Cleaned dataset (auto-generated)
+
 ├── analysis.py # Main script for cleaning, EDA & visualization
+
 └── README.md # Project documentation
 
 ---
