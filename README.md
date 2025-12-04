@@ -106,21 +106,16 @@ All charts are created with Matplotlib and Seaborn.
 
 ## 📁 File Structure
 
-├── dirty_cafe_sales.csv # Raw dataset
-
-├── clean_cafe_sales.csv # Cleaned dataset (auto-generated)
-
-├── analysis.py # Main script for cleaning, EDA & visualization
-
-└── README.md # Project documentation
+- ├── dirty_cafe_sales.csv # Raw dataset
+- ├── clean_cafe_sales.csv # Cleaned dataset (auto-generated)
+- ├── analysis.py # Main script for cleaning, EDA & visualization
+- └── README.md # Project documentation
 
 ---
 
 ## 🧪 How to Run This Project
 
-### 1️⃣ Install required libraries
-
-Run this command in your terminal:
+#### Run this command in your terminal:
 
 pip install pandas numpy matplotlib seaborn
 
@@ -128,14 +123,14 @@ pip install pandas numpy matplotlib seaborn
 
 python analysis.py
 
-3️⃣ Output
+### 3️⃣ Output
 
 After running:
 
-A cleaned CSV file will be generated
-All visualizations will be saved in the project folder
-Terminal will display summaries and analysis results
-You can modify or extend the analysis freely.
+- A cleaned CSV file will be generated
+- All visualizations will be saved in the project folder
+- Terminal will display summaries and analysis results
+- You can modify or extend the analysis freely.
 
 ### 🤝 Contribution
 
