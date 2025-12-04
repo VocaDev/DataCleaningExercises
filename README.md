@@ -132,11 +132,11 @@ After running:
 - Terminal will display summaries and analysis results
 - You can modify or extend the analysis freely.
 
-### 🤝 Contribution
+## 🤝 Contribution
 
 Feel free to contribute, improve, or suggest changes via pull requests or issues.
 
-### 📬 How to Reach Me
+## 📬 How to Reach Me
 
 You can contact me for feedback, collaboration, or questions:
 
