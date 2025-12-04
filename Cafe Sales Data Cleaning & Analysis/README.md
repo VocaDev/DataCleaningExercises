@@ -132,14 +132,3 @@ After running:
 - Terminal will display summaries and analysis results
 - You can modify or extend the analysis freely.
 
-## 🤝 Contribution
-
-Feel free to contribute, improve, or suggest changes via pull requests or issues.
-
-## 📬 How to Reach Me
-
-You can contact me for feedback, collaboration, or questions:
-
-- Email: gentainvoca@gmail.com
-
-- LinkedIn: https://www.linkedin.com/in/gentian-voca-578943322/
