@@ -115,15 +115,15 @@ All charts are created with Matplotlib and Seaborn.
 
 ## 🧪 How to Run This Project
 
-#### 1️⃣ Run this command in your terminal:
+### 1️⃣ Run this command in your terminal:
 
 pip install pandas numpy matplotlib seaborn
 
-#### 2️⃣ Run the main Python script
+### 2️⃣ Run the main Python script
 
 python analysis.py
 
-#### 3️⃣ Output
+### 3️⃣ Output
 
 After running:
 
