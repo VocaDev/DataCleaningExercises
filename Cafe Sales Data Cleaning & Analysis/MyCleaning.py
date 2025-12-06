@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # =============================================================
 # 1. LOAD DATA
@@ -159,12 +160,12 @@ print(df_clean.groupby("year")["total_spent"].sum())
 """
 
 # =============================================================
-# 11. Vizualizimi
+# 11. Vizualizimi – Shpjegime dhe Grafika
 # =============================================================
 
-
 # 1. Bar Charts
-# A
+# -----------------
+# A. Shitjet totale për secilin artikull
 """
 total_sales = df_clean.groupby('item')['total_spent'].sum()
 
@@ -180,10 +181,10 @@ plt.xlabel("Item")
 plt.ylabel("Total Sales")
 
 plt.tight_layout()
-
 plt.show()
 """
-# B
+# B. Numri i pagesave sipas metodës së pagesës
+"""
 payments = df_clean["payment_method"].value_counts()
 
 x = list(payments.index)
@@ -194,18 +195,17 @@ plt.figure(figsize=(8,5))
 # Ngjyra të personalizuara për çdo metodë pagese
 colors = ["#4C72B0", "#55A868", "#C44E52", "#8172B2", "#CCB974"]
 
-# Shtyllat
 bars = plt.bar(x, y, color=colors[:len(x)], width=0.55, edgecolor="black", linewidth=1.2)
 
-# Titulli dhe fontet
+# Titulli dhe etiketat
 plt.title("Count of Payment Methods", fontsize=16, fontweight="bold", pad=15)
 plt.xlabel("Payment Method", fontsize=13)
 plt.ylabel("Count", fontsize=13)
 
-# Vendos një grid horizontal të butë
+# Grid horizontal për referencë vizuale
 plt.grid(axis="y", linestyle="--", alpha=0.4)
 
-# Vendos etiketa mbi shtyllat
+# Vendos etiketa mbi çdo shtyllë për lexueshmëri
 for bar in bars:
     height = bar.get_height()
     plt.text(
@@ -220,5 +220,114 @@ for bar in bars:
 
 plt.tight_layout()
 plt.show()
+"""
 
-#2.
+# 2. Line Chart – Shitjet me kalimin e kohës
+"""
+# Grupimi sipas vitit dhe muajit dhe marrja e totalit
+monthly_spent = df_clean.groupby(['year', 'month'])['total_spent'].sum().reset_index()
+
+# Krijo kolonën 'date' për timeline
+monthly_spent['date'] = pd.to_datetime(monthly_spent[['year', 'month']].assign(day=1))
+
+# Rendit sipas date
+monthly_spent = monthly_spent.sort_values('date')
+
+# Vizualizimi
+plt.figure(figsize=(10,5))
+plt.plot(monthly_spent['date'], monthly_spent['total_spent'], marker='o', color="#4C72B0")
+plt.title("Shitjet me kalimin e kohës", fontsize=16, fontweight="bold")
+plt.xlabel("Data", fontsize=13)
+plt.ylabel("Shpenzimet", fontsize=13)
+plt.xticks(rotation=45)
+plt.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+"""
+
+# 3. Pie Chart – Përqindja e mënyrave të pagesës
+"""
+paymet_count = df_clean["payment_method"].value_counts()
+
+values = paymet_count.values
+labels = paymet_count.index
+
+plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=140, explode=[0.1, 0, 0], shadow=True,
+        colors=["#4C72B0", "#55A868", "#CF282E"])
+plt.title("Përqindja e mënyrave të pagesës", fontsize=16, fontweight="bold")
+plt.axis('equal')  # për të bërë rrethin perfekt
+plt.show()
+"""
+
+# 4. Histogram – Shpërndarja e sasisë dhe e shpenzimeve
+"""
+# A. Quantity
+data = df_clean["quantity"]
+
+plt.figure(figsize=(8,5))
+plt.hist(data, bins=10, color="#4C72B0", edgecolor="black", alpha=0.7)
+plt.title("Shpërndarja e Sasisë së Artikujve", fontsize=16, fontweight="bold")
+plt.xlabel("Sasia", fontsize=13)
+plt.ylabel("Numri i Transaksioneve", fontsize=13)
+plt.grid(axis="y", linestyle="--", alpha=0.4)
+plt.tight_layout()
+plt.show()
+
+# B. Total Spent
+data = df_clean["total_spent"]
+
+plt.figure(figsize=(8,5))
+sns.histplot(data, bins=10, kde=True, color="#4FB63D", edgecolor="black", alpha=0.7)
+plt.title("Shpërndarja e Shpenzimeve Totale", fontsize=16, fontweight="bold")
+plt.xlabel("Shpenzimet", fontsize=13)
+plt.ylabel("Numri i Transaksioneve", fontsize=13)
+plt.grid(axis="y", linestyle="--", alpha=0.4)
+plt.tight_layout()
+plt.show()
+"""
+
+# 5. BoxPlot – Krahasimi i çmimeve mes artikujve
+"""
+plt.figure(figsize=(10,6))
+sns.boxplot(
+    x="item",
+    y="price_per_unit",
+    data=df_clean,
+    palette="Set2"  # ngjyra të ndryshme për artikujt
+)
+plt.title("Krahasimi i Çmimeve për Artikuj", fontsize=16, fontweight="bold")
+plt.xlabel("Artikulli", fontsize=13)
+plt.ylabel("Çmimi për Njësi (€)", fontsize=13)
+plt.xticks(rotation=45, ha='right')  # për të lexuar emrat e artikujve
+plt.grid(axis="y", linestyle="--", alpha=0.4)
+plt.tight_layout()
+plt.show()
+"""
+
+# 6. HeatMap – Korelacionet e kolonave numerike
+"""
+df_numeric = df_clean.select_dtypes(include=np.number)
+df_corr = df_numeric.corr()
+
+plt.figure(figsize=(8,6))
+sns.heatmap(
+    df_corr, 
+    annot=True,        # tregon vlerat e korelacionit mbi çdo qelizë
+    fmt=".2f",         # 2 shifra pas presjes dhjetore
+    cmap="coolwarm",   # gradient ngjyrash (kuq-blue)
+    linewidths=0.5,    # linja midis qelizave
+    square=True
+)
+plt.title("Heatmap – Korelacionet e kolonave numerike", fontsize=16, fontweight="bold")
+plt.tight_layout()
+plt.show()
+"""
+
+# =============================================================
+# Përfundim
+# =============================================================
+# ✅ Deri këtu kemi: 
+# 1. Pastruar të dhënat (kolonat numerike dhe tekstuale, NaN, outlier)
+# 2. Analizuar datasetin me statistika bazë dhe grupime
+# 3. Vizualizuar me: bar chart, line chart, pie chart, histogram, boxplot dhe heatmap
+# Kjo përbën një workflow të plotë nga "dirty file" tek "clean & analyzed dataset".
