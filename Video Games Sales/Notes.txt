@@ -1,0 +1,5 @@
+Where I got the Dataset from: https://www.kaggle.com/datasets/gregorut/videogamesales
+
+What are we going to do:
+
+1. 
